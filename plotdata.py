@@ -104,7 +104,7 @@ class matedata:
             if sum(v for v in issues if v is not None):
                 color, label = (
                     ("red", "needs investigation")
-                    if i[-1]
+                    if issues[-1]
                     else ("orange", "needed investigation")
                 )
                 issueIdx = [idx for idx, val in enumerate(issues) if val]
