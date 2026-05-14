@@ -180,7 +180,7 @@ class matedata:
             )
             yt = list(usedAxis.get_yticks())
             ytGap = yt[1] - yt[0] if len(yt) > 1 else 0
-            if min(dataset[plotStart:]) > yt[1]:
+            if min(m for m in dataset[plotStart:] if m is not None) > yt[1]:
                 yt.pop(0)
             usedAxis.set_yticks(
                 [t for t in yt if t < maxValue - 0.5 * ytGap] + [maxValue]
