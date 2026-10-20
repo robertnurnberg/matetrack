@@ -660,10 +660,14 @@ if __name__ == "__main__":
             if childbm:  # adjust to root PoV
                 childbm = -childbm + (1 if childbm < 0 else 0)
             if mate:
+                matechild = -mate if mate > 0 else -mate + 1
                 if childbm:
                     if mate * childbm > 0:
                         if abs(mate) < abs(childbm):
                             txt = f"Found mate #{mate} (better than #{childbm}) for move {move}"
+                            txt += (
+                                f"\n{child} bm #{matechild}; PV: {' '.join(pv[1:])};\n"
+                            )
                             record_multipv_issue(
                                 multipv, "Better mates", txt, fen, bestmate
                             )
@@ -677,6 +681,9 @@ if __name__ == "__main__":
                         record_multipv_issue(multipv, "Wrong mates", txt, fen, bestmate)
                 else:
                     txt = f"Found mate #{mate} (unexpected) for move {move}"
+                    txt += (
+                        f"\n{child} bm #{matechild}; PV: {' '.join(pv[1:])};\n"
+                    )
                     record_multipv_issue(
                         multipv, "Unexpected mates", txt, fen, bestmate
                     )
