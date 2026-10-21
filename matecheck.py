@@ -660,7 +660,7 @@ if __name__ == "__main__":
             if childbm:  # adjust to root PoV
                 childbm = -childbm + (1 if childbm < 0 else 0)
             if mate:
-                matechild = -mate if mate > 0 else -mate + 1
+                matechild = -mate + (1 if mate > 0 else 0)
                 if childbm:
                     if mate * childbm > 0:
                         if abs(mate) < abs(childbm):
